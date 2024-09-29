@@ -8,7 +8,6 @@ RSpec.describe "Sessions", type: :request do
 
         post "/sign_in", params: { username: user.username, password: user.password }
 
-
         expected_session = user.sessions.first
         expect(response).to have_http_status(:created)
         expect(JSON.parse(response.body)["token"]).to eq(expected_session.signed_id)
@@ -30,8 +29,7 @@ RSpec.describe "Sessions", type: :request do
   describe "DELETE /sign_out" do
     context "when valid token" do
       it "destroys the session" do
-        user = create :user
-        session = create :session, user: user
+        session = create :session
 
         delete "/sign_out", headers: { "Authorization" => "Bearer #{session.signed_id}" }
 

@@ -7,4 +7,10 @@ Rails.application.routes.draw do
 
   post "sign_in", to: "sessions#create"
   delete "sign_out", to: "sessions#destroy"
+
+  namespace :api do
+    post "transactions/transfer", to: "transactions#transfer"
+    post "transactions/deposit", to: "transactions#deposit"
+    post "transactions/withdraw", to: "transactions#withdraw"
+  end
 end
