@@ -1,0 +1,12 @@
+default: &default
+  api_key: <%= ENV['RAPID_API_KEY'] %>
+  api_host: "latest-stock-price.p.rapidapi.com"
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  api_key: <%= ENV['RAPID_API_KEY'] %>

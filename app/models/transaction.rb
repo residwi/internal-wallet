@@ -8,7 +8,7 @@ class Transaction < ApplicationRecord
   validates :target_wallet, presence: true, on: :transfer
   validates :amount, numericality: { greater_than: 0 }
 
-  validate :sufficient_funds, on: [ :transfer, :withdraw ]
+  validate :sufficient_funds, on: [ :transfer, :withdraw, :buy ]
 
   def self.transfer!(source_wallet_id:, target_wallet_id:, amount:)
     ActiveRecord::Base.transaction do

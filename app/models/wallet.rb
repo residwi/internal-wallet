@@ -1,6 +1,7 @@
 class Wallet < ApplicationRecord
   belongs_to :walletable, polymorphic: true
   has_many :transactions, foreign_key: "source_wallet_id"
+  has_many :stock_transactions, foreign_key: "source_wallet_id"
 
   def balance
     @balance ||= calculate_balance

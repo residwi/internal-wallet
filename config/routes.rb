@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   delete "sign_out", to: "sessions#destroy"
 
   namespace :api do
+    get "stocks", to: "stocks#index"
+    get "stocks/:symbol", to: "stocks#show", as: :stock
+    post "stocks/buy", to: "stocks#buy"
+
     post "transactions/transfer", to: "transactions#transfer"
     post "transactions/deposit", to: "transactions#deposit"
     post "transactions/withdraw", to: "transactions#withdraw"

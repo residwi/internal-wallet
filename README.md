@@ -1,24 +1,41 @@
-# README
+# Internal Wallet
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+1. **Build the Docker image**
 
-* Ruby version
+    You can build the image using the following command:
 
-* System dependencies
+    ```bash
+    docker build -t internal-wallet .
+    ```
 
-* Configuration
+    This will create a Docker image named `internal-wallet`.
 
-* Database creation
+2. **Run the Docker container**
 
-* Database initialization
+    You can run the container using the following command:
 
-* How to run the test suite
+    ```bash
+    docker run -p 3000:3000 internal-wallet
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+    This will start the Rails server on port 3000.
 
-* Deployment instructions
+3. **Setup the database**
 
-* ...
+    In another terminal window, run the following command:
+
+    ```bash
+    docker exec -it <container_id> bin/rails db:setup
+    ```
+
+    Replace `<container_id>` with the ID of your Docker container. This will create the database, load the schema and initialize it with the seed data.
+
+4. **Visit the application**
+
+    Open your web browser and visit `http://localhost:3000`.
+
+## Setup RapidAPI Key
+
+Set the `RAPID_API_KEY` environment variable to your RapidAPI key.
